@@ -45,7 +45,7 @@ svg { width: 21px; height: 21px; vertical-align: middle; flex-shrink: 0; }
 .shell { display: grid; grid-template-columns: 232px 1fr; min-height: 100vh; }
 aside { background: #0d1726; border-right: 1px solid #203148; color: var(--muted); padding: 34px 22px; position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; }
 .nav-label { font-size: 10px; letter-spacing: 1.4px; color: #93a8c2; margin: 47px 0 17px; }
-nav { display: grid; gap: 7px; }
+nav { display: grid; gap: 7px; overflow-y: auto; min-height: 0; }
 nav button { display: flex; gap: 13px; align-items: center; text-align: left; padding: 12px 13px; border-radius: 12px; font-size: 13px; min-height: 48px; }
 nav button > span { width: 21px; display: flex; }
 nav button.active { background: #193b40; color: #80efdd; box-shadow: inset 3px 0 0 var(--teal); font-weight: 650; }
@@ -224,3 +224,20 @@ dialog #close { min-width: 44px; font-size: 26px; color: #c9d7e8; }
 @media (prefers-reduced-motion: no-preference) {
   button { transition: background-color .15s ease, color .15s ease; }
 }
+.plan-card strong { display: block; font-size: 24px; margin: 18px 0; overflow-wrap: anywhere; }
+.plan-card strong small { display: block; font-size: 13px; color: var(--muted); margin-top: 8px; }
+.plan-card p { font-size: 13px; overflow-wrap: anywhere; }
+.plan-state { color: #70e4c4; font-size: 12px; }
+.warning { color: #ffb7ab; }
+progress { width: 100%; height: 10px; accent-color: var(--teal); }
+.safe-summary { display: flex; justify-content: space-between; align-items: center; gap: 18px; }
+.safe-summary h2 { font-size: 30px; margin: 12px 0; color: #70e4c4; }
+.safe-summary p { margin-bottom: 0; font-size: 13px; }
+.bill-calendar { margin-bottom: 20px; }
+.calendar-grid { display: grid; grid-template-columns: repeat(7,minmax(0,1fr)); gap: 6px; }
+.calendar-day { background: #0d1726; border: 1px solid var(--border); border-radius: 9px; min-height: 75px; padding: 9px; font-size: 12px; min-width: 0; }
+.calendar-day.today { border-color: var(--teal); }
+.calendar-day span { display: block; color: #ffb7ab; font-size: 10px; margin-top: 6px; overflow-wrap: anywhere; }
+.calendar-day span.paid { color: #70e4c4; }
+@media (max-width:700px) { .safe-summary { align-items: flex-start; flex-direction: column; } .calendar-day { padding: 5px; min-height: 58px; } .calendar-grid { gap: 3px; } .calendar-day span { font-size: 9px; } }
+.calendar-weekday { text-align: center; color: var(--muted); font-size: 11px; padding: 6px 0; }

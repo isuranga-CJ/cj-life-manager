@@ -58,3 +58,13 @@ SQL files in db/ document changes ALREADY APPLIED to project hrrflxpcbsywiffseou
 - No authentication settings were weakened. No privileged keys are included.
 
 Existing Vercel deployment protection was preserved. Demo verification wrote no sample records to Supabase.
+
+## Planning v1 — ready for review, unpublished
+
+Monthly category budgets, bill calendar with in-app due/overdue reminders, reserved savings goals and a current-month safe-to-spend estimate are implemented on the planning-v1 branch. Git deployments for this branch are disabled pending publishing approval; main is not disabled.
+
+Budgets warn at 80% and show overspending. Bill payments are a checklist only: recording an expense remains separate. Every bill is one payment; recurring generation, notifications and payment execution are not included. Goal reservations represent funds already held in tracked accounts; no ledger entries are generated. Safe-to-spend subtracts goal reservations and, per category, the larger of remaining budget or unpaid bills due through month-end, including overdue bills. Future income is excluded. Savings estimates round up over the remaining calendar months including the current month.
+
+Migration cj_planning_v1 has already added budgets, bills and savings_goals with owner-only SELECT/INSERT/UPDATE, no client DELETE and no anonymous grants. Existing tables and data were not changed. db/planning-schema.sql documents the applied change; do not rerun it. db/planning-verification.sql is a rollback-only security test.
+
+Verification: 15 ledger/planning tests passed, production build passed, rollback-only owner reads/writes, cross-user read/update denial, ownership reassignment denial, anonymous denial, duplicate-budget and savings constraints passed. No sample records persisted. Browser visual QA is pending because the cloud browser rejected file-protocol navigation; no workaround was attempted. Email auth and real-device mobile checks remain pending as above.
