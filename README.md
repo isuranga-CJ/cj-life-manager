@@ -47,12 +47,14 @@ SQL files in db/ document changes ALREADY APPLIED to project hrrflxpcbsywiffseou
 - Production dependency audit: 0 known vulnerabilities at test time.
 - Supabase security advisor: only leaked-password protection disabled remains.
 
-## Pending gates and access blockers
+## Production deployment and remaining verification
 
 - GitHub read/write access was verified on 2026-10-10 after installing the ChatGPT Codex Connector. Source is committed to isuranga-CJ/cj-life-manager.
-- Vercel team Z BORN GEN is accessible and had no projects. Nothing has been published; user requested approval first.
-- No supported browser-control surface was available for local mobile viewport QA. Responsive CSS is implemented, but visual/mobile interaction QA is not completed.
-- Live email confirmation/login/recovery and deployment end-to-end verification remain pending.
+- Published after explicit user approval on 2026-10-10: https://cj-life-manager.vercel.app. Vercel production deployment dpl_He5uGDeYWJ6LGXbWyB2J6YEpkN6f reached READY, using application commit c7d4a1fa7da4cb2a06f57b4e0f6b25bbcd8e308c.
+- Live browser demo verified dashboard, expense save and balance/report recalculation, rider tracking, casino shifts and reports. No application-origin browser errors observed; no production error/fatal runtime logs were returned during the check.
+- Public Supabase Auth settings confirm email signup is enabled and email confirmation is required. Anonymous requests exposed no existing-table rows; tracking-table requests were denied.
+- Responsive CSS is implemented. The available cloud browser has no supported mobile viewport control; actual mobile interaction QA remains pending.
+- Supabase Auth Site URL/redirect allow-list still require verification for https://cj-life-manager.vercel.app. The connected Supabase tools do not support these settings. Live email confirmation/login/recovery have not been tested.
 - No authentication settings were weakened. No privileged keys are included.
 
-The empty repository and absence of Vercel projects were verified before committing. Obtain publishing approval before any deployment trigger.
+Existing Vercel deployment protection was preserved. Demo verification wrote no sample records to Supabase.
