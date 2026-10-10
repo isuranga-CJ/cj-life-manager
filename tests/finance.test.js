@@ -1,0 +1,10 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {balance,riderNet,shiftHours,localDate,validate,monthRows,csv} from '../src/finance.js';
+test('transfers preserve total funds without counting as earnings',()=>{const a={id:'a',opening_balance:100},b={id:'b',opening_balance:20},d={income:[{account_id:'a',amount:0.1},{account_id:'a',amount:0.2}],expenses:[{account_id:'a',amount:10}],transactions:[{from_account_id:'a',to_account_id:'b',amount:30}]};assert.equal(balance(a,d),60.3);assert.equal(balance(b,d),50);assert.equal(balance(a,d)+balance(b,d),110.3)});
+test('rider net includes all costs',()=>assert.equal(riderNet({gross:5800,commission:870,fuel:1200,other_cost:100}),3630));
+test('overnight Colombo shifts subtract breaks',()=>assert.equal(shiftHours({starts_at:'2026-10-10T22:00:00+05:30',ends_at:'2026-10-11T08:00:00+05:30',break_minutes:60}),9));
+test('Colombo date crosses UTC midnight correctly',()=>assert.equal(localDate(new Date('2026-10-10T19:00:00Z')),'2026-10-11'));
+test('transfer and amount guards',()=>{assert.throws(()=>validate('transactions',{amount:1,from_account_id:'a',to_account_id:'a'}));assert.throws(()=>validate('income',{amount:-2}));assert.throws(()=>validate('expenses',{amount:NaN}))});
+test('invalid shift rejected',()=>assert.throws(()=>validate('casino_shifts',{starts_at:'2026-10-10T10:00:00Z',ends_at:'2026-10-10T09:00:00Z',break_minutes:0})));
+test('month reports filter by local shift date',()=>assert.equal(monthRows([{starts_at:'2026-09-30T19:00:00Z'}],'2026-10').length,1));
+test('CSV quotes and neutralizes formula cells',()=>assert.equal(csv([['=HYPERLINK("x")','a,b']]),'"\'=HYPERLINK(""x"")","a,b"'));
