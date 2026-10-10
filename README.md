@@ -2,6 +2,10 @@
 
 Mobile-first personal finance app built with Vite, vanilla JavaScript and the official Supabase client. Currency: LKR. Reporting and shift input timezone: Asia/Colombo.
 
+## Theme
+
+Midnight Ledger uses deep navy surfaces, teal actions, mint income and coral expenses. System fonts, larger labels, tabular money figures, consistent SVG icons and 44px touch targets keep the mobile interface readable. Financial amounts move onto their own line in narrow record lists.
+
 ## Features
 
 - Supabase email/password sign-in, sign-up, sign-out and password recovery
