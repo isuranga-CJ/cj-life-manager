@@ -4,7 +4,14 @@ Mobile-first personal finance app built with Vite, vanilla JavaScript and the of
 
 ## Theme
 
-Midnight Ledger uses deep navy surfaces, teal actions, mint income and coral expenses. System fonts, larger labels, tabular money figures, consistent SVG icons and 44px touch targets keep the mobile interface readable. Financial amounts move onto their own line in narrow record lists.
+Lilac Day uses white/lavender surfaces, violet actions, navy feature cards, green income and rose expenses. The reference-inspired layout puts balances before planning details. Mobile uses icon-only Home, Money, Add, Plans and More navigation with accessible names and touch targets. Money and Plans hubs keep every existing destination reachable; the Add sheet supports all record types. Desktop retains the complete icon rail.
+
+## Install on a phone
+
+Open https://cj-life-manager.vercel.app in Android Chrome and choose Install app or Add to Home screen from the browser menu. The app also offers an Install app button using the browser prompt when available, with manual guidance otherwise. The manifest defines standalone display, app identity and 192/512px regular and maskable icons. iOS uses Share → Add to Home Screen.
+
+This release is a PWA, not a signed Android APK or Play Store release. Sign-in, refresh and real writes require internet access. A service worker provides only a generic offline reconnect page; it never caches Supabase/API responses, financial entries or authentication. No offline write queue exists. Existing Supabase session persistence is unchanged. Connection changes do not rerender or discard an open entry form.
+
 
 ## Features
 
@@ -68,3 +75,7 @@ Budgets warn at 80% and show overspending. Bill payments are a checklist only: r
 Migration cj_planning_v1 has already added budgets, bills and savings_goals with owner-only SELECT/INSERT/UPDATE, no client DELETE and no anonymous grants. Existing tables and data were not changed. db/planning-schema.sql documents the applied change; do not rerun it. db/planning-verification.sql is a rollback-only security test.
 
 Verification: 15 ledger/planning tests passed, production build passed, rollback-only owner reads/writes, cross-user read/update denial, ownership reassignment denial, anonymous denial, duplicate-budget and savings constraints passed. No sample records persisted. Browser visual QA is pending because the cloud browser rejected file-protocol navigation; no workaround was attempted. Email auth and real-device mobile checks remain pending as above.
+
+## Lilac Day / PWA release — 2026-10-10
+
+The user authorized the reference-inspired mobile design and installable PWA after approving publication earlier in the session. This release requires no database changes. Tests cover navigation reachability, parent highlights, manifest/icon dimensions, and service-worker exclusion of auth/API/POST requests. Actual Android installation and authenticated email flows still require device/account verification.
