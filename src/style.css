@@ -241,3 +241,41 @@ progress { width: 100%; height: 10px; accent-color: var(--teal); }
 .calendar-day span.paid { color: #70e4c4; }
 @media (max-width:700px) { .safe-summary { align-items: flex-start; flex-direction: column; } .calendar-day { padding: 5px; min-height: 58px; } .calendar-grid { gap: 3px; } .calendar-day span { font-size: 9px; } }
 .calendar-weekday { text-align: center; color: var(--muted); font-size: 11px; padding: 6px 0; }
+/* Icon navigation keeps every destination reachable with a named, 44px+ button. */
+.shell { grid-template-columns: 88px minmax(0,1fr); }
+aside { padding: 22px 13px; align-items: center; }
+aside .brand > span, aside .nav-label, aside .sidebar-bottom { display: none; }
+aside .brand { margin-bottom: 22px; }
+nav { width: 100%; gap: 4px; }
+nav button { width: 52px; min-height: 48px; padding: 12px; justify-content: center; }
+nav button > span { width: 24px; }
+nav svg { width: 24px; height: 24px; }
+#logout { margin-top: auto; font-size: 10px; text-align: center; padding-top: 16px; }
+.home-welcome { margin-bottom: 18px; }
+.home-welcome h2 { font-size: 28px; margin: 10px 0; }
+.home-welcome p { margin: 0; font-size: 14px; }
+.home-shortcuts { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: 12px; margin: 20px 0; }
+.home-shortcut { display: flex; flex-direction: column; align-items: flex-start; gap: 9px; padding: 18px; min-width: 0; text-align: left; border: 1px solid var(--border); background: var(--surface); border-radius: 16px; }
+.home-shortcut:hover { background: #1c3446; }
+.shortcut-icon { color: var(--teal); }
+.home-shortcut b { font-size: 13px; }
+.home-shortcut small { font-size: 11px; color: var(--muted); }
+.home-plans { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; margin: 20px 0; }
+.home-item { display: flex; align-items: center; justify-content: space-between; gap: 10px; border-top: 1px solid var(--border); padding: 15px 0; min-width: 0; }
+.home-item b { font-size: 13px; overflow-wrap: anywhere; }
+.home-item small { display: block; color: var(--muted); margin-top: 5px; font-size: 11px; }
+.home-item small.warning { color: #ffb7ab; }
+.home-item strong { font-size: 13px; text-align: right; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+@media(max-width:1100px) { .home-shortcuts { grid-template-columns: repeat(3,minmax(0,1fr)); } .home-plans { grid-template-columns: 1fr; } }
+@media(max-width:700px) {
+ .shell { display: block; }
+ aside { position: sticky; top: 0; z-index: 5; padding: 12px 16px 8px; display: block; background: #0d1726f5; backdrop-filter: blur(12px); }
+ aside .brand { margin-bottom: 8px; }
+ #logout { position: absolute; top: 12px; right: 16px; margin: 0; padding: 0; font-size: 12px; }
+ nav { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: 4px; padding: 4px 0; overflow: visible; }
+ nav button { width: 100%; min-height: 44px; padding: 10px; border-radius: 10px; }
+ nav button > span,nav svg { width: 22px; height: 22px; }
+ .home-shortcuts { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+ .home-shortcut { padding: 15px; }
+ .home-welcome h2 { font-size: 25px; }
+}

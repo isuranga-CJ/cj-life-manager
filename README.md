@@ -59,9 +59,9 @@ SQL files in db/ document changes ALREADY APPLIED to project hrrflxpcbsywiffseou
 
 Existing Vercel deployment protection was preserved. Demo verification wrote no sample records to Supabase.
 
-## Planning v1 — ready for review, unpublished
+## Planning v1 — approved for publication
 
-Monthly category budgets, bill calendar with in-app due/overdue reminders, reserved savings goals and a current-month safe-to-spend estimate are implemented on the planning-v1 branch. Git deployments for this branch are disabled pending publishing approval; main is not disabled.
+Monthly category budgets, bill calendar with in-app due/overdue reminders, reserved savings goals and a current-month safe-to-spend estimate are implemented on the planning-v1 branch. User approved publication on 2026-10-10. The release also adds a Home dashboard with quick actions, upcoming bills, budget pulse and savings summaries, plus icon-only navigation with accessible labels, tooltips, active highlights and 44px+ touch targets.
 
 Budgets warn at 80% and show overspending. Bill payments are a checklist only: recording an expense remains separate. Every bill is one payment; recurring generation, notifications and payment execution are not included. Goal reservations represent funds already held in tracked accounts; no ledger entries are generated. Safe-to-spend subtracts goal reservations and, per category, the larger of remaining budget or unpaid bills due through month-end, including overdue bills. Future income is excluded. Savings estimates round up over the remaining calendar months including the current month.
 
