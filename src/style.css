@@ -338,17 +338,25 @@ dialog { box-shadow: 0 20px 100px #18263d33; }
 dialog::backdrop { background: #17223c66; }
 @media(max-width:1100px) { .hub-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
 @media(max-width:700px) {
- aside { position: relative; background: var(--canvas); padding: calc(14px + env(safe-area-inset-top,0px)) 20px 10px; border: 0; backdrop-filter: none; }
- aside .brand { margin: 0; }
- aside .brand > span { display: block; font-size: 9px; }
+ aside { position: relative; background: var(--canvas); padding: calc(6px + env(safe-area-inset-top,0px)) 20px 6px; border: 0; backdrop-filter: none; display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 12px; }
+ aside .brand { margin: 0; gap: 8px; min-width: 0; }
+ aside .brand > b { display: grid; place-items: center; width: 30px; height: 30px; padding: 0; font-size: 15px; border-radius: 9px; }
+ aside .brand > span { display: block; font-size: 10px; letter-spacing: .6px; white-space: nowrap; }
  aside nav { display: none; }
- #logout { top: calc(16px + env(safe-area-inset-top,0px)); color: #657088; }
+ #logout { position: static; margin: 0; padding: 0 4px; min-height: 44px; flex-shrink: 0; color: #657088; font-size: 11px; }
  .workspace { padding: 0 20px calc(106px + env(safe-area-inset-bottom,0px)); }
- .topbar { height: 56px; font-size: 9px; }
+ .topbar { display: none; height: auto; min-height: 0; border: 0; padding: 0; }
+ .topbar:has(.install-button:not([hidden])) { display: flex; padding: 4px 0; }
+ .topbar .status-dot { display: none; }
  .topbar > span:first-child { display: none; }
  .topbar .install-button { margin-left: 0; margin-right: auto; min-height: 38px; }
- header { margin: 22px 0; gap: 18px; }
- h1 { font-size: 34px; letter-spacing: -1.3px; }
+ .workspace > header { margin: 12px 0 16px; gap: 12px; }
+ .workspace > header .eyebrow, .workspace > header p { display: none; }
+ .workspace > header h1 { font-size: 26px; letter-spacing: -.8px; margin: 0; }
+ .header-actions { align-items: center; }
+ .month-label { font-size: 10px; gap: 4px; }
+ .month-label input { min-height: 44px; padding: 8px 10px; }
+ .header-actions .primary { min-height: 44px; padding: 10px 14px; }
  .home-welcome h2 { font-size: 25px; }
  .home-welcome .eyebrow { font-size: 9px; letter-spacing: 1px; }
  .welcome-mark { width: 44px; height: 44px; border-radius: 14px; font-size: 25px; }
@@ -366,13 +374,14 @@ dialog::backdrop { background: #17223c66; }
  .hub-card h2 { font-size: 18px; }
  .hub-card p { font-size: 12px; }
  .hub-arrow { right: 13px; top: 19px; }
- .bottom-navigation { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); align-items: center; width: 100%; position: fixed; left: 0; bottom: 0; z-index: 10; padding: 10px 14px calc(10px + env(safe-area-inset-bottom,0px)); gap: 5px; background: #fffffffa; border-top: 1px solid #e9eaf3; border-radius: 24px 24px 0 0; box-shadow: 0 -8px 28px #19253c08; }
- .bottom-navigation button { width: 100%; height: 52px; min-height: 48px; padding: 12px; color: #8891a6; border-radius: 16px; position: relative; }
+ .bottom-navigation { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); align-items: center; width: 100%; position: fixed; left: 0; bottom: 0; z-index: 10; padding: 8px 14px calc(8px + env(safe-area-inset-bottom,0px)); gap: 5px; background: #fffffffa; border-top: 1px solid #e9eaf3; border-radius: 20px 20px 0 0; box-shadow: 0 -8px 28px #19253c08; overflow: visible; }
+ .bottom-navigation button { width: 100%; height: 48px; min-height: 48px; padding: 12px; color: #8891a6; border-radius: 16px; position: relative; display: flex; align-items: center; justify-content: center; gap: 0; }
  .bottom-navigation svg { width: 24px; height: 24px; }
  .bottom-navigation button.active { color: #6255f6; background: #f1eeff; box-shadow: none; }
  .nav-indicator { display: none; }
  .bottom-navigation button.active .nav-indicator { display: block; position: absolute; bottom: 4px; left: calc(50% - 2px); width: 4px; height: 4px; border-radius: 50%; background: #6255f6; }
- .bottom-navigation button.quick-add { background: #6255f6; color: white; width: 56px; height: 56px; justify-self: center; border-radius: 19px; transform: translateY(-11px); box-shadow: 0 6px 18px #6255f63b; }
+ .bottom-navigation button.quick-add { background: #6255f6; color: white; width: 48px; height: 48px; justify-self: center; border-radius: 50%; transform: none; box-shadow: 0 3px 10px #6255f62b; }
+ .bottom-navigation button.quick-add:hover { background: #5145dc; color: white; }
  dialog.menu-sheet { width: 100%; max-width: 580px; margin: auto auto 0; border-radius: 26px 26px 0 0; padding-bottom: calc(24px + env(safe-area-inset-bottom,0px)); max-height: 85dvh; }
  footer { margin-top: 28px; }
 }
