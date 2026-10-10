@@ -1,0 +1,8 @@
+{
+  "appId": "lk.pixelcraft.cjlifemanager",
+  "appName": "CJ Life Manager",
+  "webDir": "dist",
+  "android": {
+    "allowMixedContent": false
+  }
+}

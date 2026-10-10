@@ -79,3 +79,15 @@ Verification: 15 ledger/planning tests passed, production build passed, rollback
 ## Lilac Day / PWA release — 2026-10-10
 
 The user authorized the reference-inspired mobile design and installable PWA after approving publication earlier in the session. This release requires no database changes. Tests cover navigation reachability, parent highlights, manifest/icon dimensions, and service-worker exclusion of auth/API/POST requests. Actual Android installation and authenticated email flows still require device/account verification.
+
+## Reliability and backup release — 2026-10-10
+
+Workspace reads run concurrently, paginate every table, and share a 20-second cancellation deadline. Failed first loads show an unavailable screen with Retry, instead of empty-account totals. Refresh failures preserve the previously loaded snapshot and block full backup export. Account changes clear the previous snapshot. Reads are cancelled on sign-out and recovery; financial writes are not automatically retried. Server error messages are escaped before display.
+
+Reports offers a full JSON export of all ten loaded application tables with version, currency, timezone, date and sample-mode metadata. It excludes auth/session/config objects. Keep exports private. This is an export only; automatic backup and restore/import are not implemented. Tests cover pagination, failure, pre-request and in-flight cancellation, and export table boundaries.
+
+## Android source preparation
+
+Capacitor 8.5.3 packages are pinned. Native project: `android/`; application ID: `lk.pixelcraft.cjlifemanager`. `npm run android:sync` builds and copies the current web bundle. PWA install buttons/service worker are skipped in native mode. Email confirmation/reset links currently return to the live web app; native deep-link recovery remains unimplemented.
+
+The source scaffold has been generated and synced; no APK has been compiled, signed, published or installed. Local runtime has Java 17 and no Android SDK; the generated project requires Java 21 and Android SDK 36. A production native release still needs real-device login/recovery, Android Back handling, keyboard/safe-area checks and native-compatible backup/CSV download/share verification. Do not describe this scaffold as a completed Android release. No cloud workflow, signing credential or paid service was created.
